@@ -3,7 +3,6 @@ import {
     Container,
     Row,
     Col,
-    Button,
 } from 'reactstrap';
 import TimerDisplay from './TimerDisplay';
 import TimeType from './TimeType';
@@ -12,6 +11,7 @@ import ProgressBar from './ProgressBar';
 const Button1 = (props) => <button className="btn btn-success" onClick={props.action}>{props.children}</button>
 const ButtonInc = (props) => <button className="btn btn-primary" onClick={props.action}>+ 5 minutes</button>
 const ButtonDec = (props) => <button className="btn btn-warning" onClick={props.action}>- 5 minutes</button>
+const SaveButton = (props) => <button className="btn btn-secondary" onClick={props.action}>Save</button>
 
 
 
@@ -26,6 +26,7 @@ export default class Timer extends Component {
             timerId: false,
             active: 'workTime',
             tallies: 0,
+            activity: 'not specified',
         }
 
         this.playStop = this.playStop.bind(this);
@@ -53,15 +54,15 @@ export default class Timer extends Component {
     }
 
 
-    incrementTime() {
-        this.setState((state) => {
-            return {currentTime: this.state.currentTime - 5*60}
+    incrementTime = () => {
+        this.setState({
+            seconds : this.state.seconds + 5 * 60
         })
     }
 
-    decrementTime() {
-        this.setState((state) => {
-            return {currentTime: this.state.currentTime - 5*60}
+    decrementTime = () => {
+        this.setState({
+            seconds : this.state.seconds - 5 * 60
         })
     }
     
@@ -103,20 +104,10 @@ export default class Timer extends Component {
                                 <Col>
                                     <h1>Pomodoro Timer</h1>
                                     <p>
-                                        <Button
-                                            color="primary"
-                                            size="large">
-                                            + 5 minutes
-                                        </Button>
-                                        <ButtonInc action={this.incrementTime}/>
+                                        <ButtonInc action={this.incrementTime} updateLength={this.updateLength.bind(this)}/>
                                     </p>
                                     <p>
-                                        <Button
-                                            color="warning"
-                                            size="large">
-                                            - 5 minutes
-                                        </Button>
-                                        <ButtonDec action={this.decrementTime}/>
+                                        <ButtonDec action={this.decrementTime} updateLength={this.updateLength.bind(this)}/>
                                     </p>
                                 </Col>
                                     
@@ -131,6 +122,7 @@ export default class Timer extends Component {
                                         </Button1>
                                     </p>
                                     <TimerDisplay active={this.state.active} seconds={this.state.seconds}/>
+                                    <SaveButton/>
                                 </Col>
                                 <Col>
                                     <TimeType value={this.state.workTime} timer="workTime" updateLength={this.updateLength.bind(this)}>Minutes of work</TimeType>
@@ -141,8 +133,7 @@ export default class Timer extends Component {
                         </Container>
                     
                             
-                        <ProgressBar tallies={this.state.tallies}/>
-                            
+                        <ProgressBar tallies={this.state.tallies}/>                            
                         
 
                     </div>
