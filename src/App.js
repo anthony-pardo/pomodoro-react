@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
+import Root from "./containers/Root";
 
 class App extends Component {
     constructor(props) {
@@ -54,6 +55,9 @@ class App extends Component {
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
+        </div>
+        <div>
+          <Root/>
         </div>
       </Router>
             

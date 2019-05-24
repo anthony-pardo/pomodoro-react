@@ -122,7 +122,6 @@ export default class Timer extends Component {
                                         </Button1>
                                     </p>
                                     <TimerDisplay active={this.state.active} seconds={this.state.seconds}/>
-                                    <SaveButton/>
                                 </Col>
                                 <Col>
                                     <TimeType value={this.state.workTime} timer="workTime" updateLength={this.updateLength.bind(this)}>Minutes of work</TimeType>
