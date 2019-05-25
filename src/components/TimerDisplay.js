@@ -14,12 +14,12 @@ export default class TimerDisplay extends Component {
   
     render() {
       var remainingTime = this.convertToHhMmSs(this.props.seconds);
-      var activeTimer = this.props.active === 'workTime' ? 'Working' : 'Break';
+      var activeTimer = this.props.active === 'workTime' ? 'Work' : 'Break';
   
       return (
         <div className="timer">
-          <p className="timer__description">{activeTimer}</p>
-          <p className="timer__time">{remainingTime}</p>
+          <p className="timer_description">{activeTimer}</p>
+          <p className="timer_time">{remainingTime}</p>
         </div>
       )
     }

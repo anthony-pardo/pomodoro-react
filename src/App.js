@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../src/App.scss';
 import {
     Jumbotron,
 } from 'reactstrap';
@@ -8,6 +9,7 @@ import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
 import Root from "./containers/Root";
+import Quote from "./components/Quote";
 
 class App extends Component {
     constructor(props) {
@@ -55,10 +57,14 @@ class App extends Component {
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
+
+          <div>
+          <Quote/>
+          </div>
         </div>
-        <div>
+        {/* <div>
           <Root/>
-        </div>
+        </div> */}
       </Router>
             
         );

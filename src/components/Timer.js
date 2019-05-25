@@ -8,9 +8,9 @@ import TimerDisplay from './TimerDisplay';
 import TimeType from './TimeType';
 import ProgressBar from './ProgressBar';
 
-const Button1 = (props) => <button className="btn btn-success" onClick={props.action}>{props.children}</button>
-const ButtonInc = (props) => <button className="btn btn-primary" onClick={props.action}>+ 5 minutes</button>
-const ButtonDec = (props) => <button className="btn btn-warning" onClick={props.action}>- 5 minutes</button>
+const Button1 = (props) => <button className="btn btn-success button1" onClick={props.action}>{props.children}</button>
+const ButtonInc = (props) => <button className="btn btn-primary buttonIncDec" onClick={props.action}>+ 5 minutes</button>
+const ButtonDec = (props) => <button className="btn btn-warning buttonIncDec" onClick={props.action}>- 5 minutes</button>
 const SaveButton = (props) => <button className="btn btn-secondary" onClick={props.action}>Save</button>
 
 
@@ -100,11 +100,14 @@ export default class Timer extends Component {
         return (
             <div>
                 <Container>
+                    <div>
+                    <h1 className="main-title text-center">Pomodoro Timer</h1>
+                    </div>
+
                             <Row>
                                 <Col>
-                                    <h1>Pomodoro Timer</h1>
                                     <p>
-                                        <ButtonInc action={this.incrementTime} updateLength={this.updateLength.bind(this)}/>
+                                        <ButtonInc className="button" action={this.incrementTime} updateLength={this.updateLength.bind(this)}/>
                                     </p>
                                     <p>
                                         <ButtonDec action={this.decrementTime} updateLength={this.updateLength.bind(this)}/>
